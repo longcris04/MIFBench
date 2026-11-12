@@ -1,0 +1,24 @@
+# data (download, see README) -- keep the empty folder
+data/*
+!data/.gitkeep
+/*.zip
+
+# runs, logs, tables written by the pipeline
+models/*/mif_runs*/
+logs/
+summary/
+inference_time/
+.mif_cache/
+
+# downloaded weights (scripts/download_weights.py)
+models/U2Fusion/vgg16.pth
+models/U2Fusion/pretrained/
+models/TC-MoA/checkpoint/*.pth
+
+# Python / editors
+__pycache__/
+*.py[cod]
+*.part
+.ipynb_checkpoints/
+.vscode/
+.idea/

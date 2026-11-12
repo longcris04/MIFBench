@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIF Review</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="loading">
+<div id="top">
+  <header class="topbar">
+    <div class="brand">MIF review</div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="images">Images</button>
+      <button role="tab" data-tab="epochs">Epochs</button>
+      <button role="tab" data-tab="scores">Scores</button>
+    </nav>
+    <div class="spacer"></div>
+    <span id="status" aria-live="polite"></span>
+    <button id="reload" class="ghost" title="Re-read the run directories (new epochs, new scores)">Reload data</button>
+    <button id="theme" class="ghost" title="Switch theme"></button>
+  </header>
+  <section class="filters">
+    <div class="group"><span class="label">Pair</span><div class="seg" id="pairSeg"></div></div>
+    <div class="group"><span class="label">Fold</span><div class="seg" id="foldSeg"></div></div>
+    <div class="group">
+      <span class="label">Epoch</span>
+      <button id="epPrev" title="Previous epoch ( [ )" aria-label="Previous epoch">‹</button>
+      <input type="range" id="epoch" min="1" max="20" step="1" aria-label="Epoch">
+      <button id="epNext" title="Next epoch ( ] )" aria-label="Next epoch">›</button>
+      <output id="epochOut" for="epoch"></output>
+    </div>
+    <div class="group"><span class="label">Metric</span><select id="metric" aria-label="Metric"></select></div>
+    <div class="group"><span class="label">Image</span><div class="seg" id="modeSeg"></div></div>
+    <div class="group"><span class="label">Size</span><input type="range" id="size" min="96" max="448" step="16" aria-label="Thumbnail size"></div>
+    <div class="group">
+      <button id="bestEp" title="Show each model at the epoch with its best mean score on the selected metric">Best epoch per model</button>
+      <button id="clearEp" title="Show every model at the global epoch">Same epoch for all</button>
+    </div>
+  </section>
+  <section class="models" id="modelChips" aria-label="Models"></section>
+</div>
+<main>
+  <section id="tab-images" class="tab"></section>
+  <section id="tab-epochs" class="tab" hidden></section>
+  <section id="tab-scores" class="tab" hidden></section>
+</main>
+<div id="lightbox" class="lightbox" hidden></div>
+<div id="tooltip" class="tooltip" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
